@@ -1,0 +1,60 @@
+43.0 APEX_CODE,FINEST;APEX_PROFILING,INFO;CALLOUT,INFO;DB,INFO;NBA,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;WAVE,INFO;WORKFLOW,INFO
+Execute Anonymous: ViewListCandidatesOrEmployeesController.getAllEmployees();
+10:23:41.1 (1069612)|USER_INFO|[EXTERNAL]|0056F0000098j9n|managerapplication@lightpoint.com|Pacific Standard Time|GMT-07:00
+10:23:41.1 (1090851)|EXECUTION_STARTED
+10:23:41.1 (1095980)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+10:23:41.1 (1277827)|HEAP_ALLOCATE|[72]|Bytes:3
+10:23:41.1 (1310396)|HEAP_ALLOCATE|[77]|Bytes:152
+10:23:41.1 (1324664)|HEAP_ALLOCATE|[342]|Bytes:408
+10:23:41.1 (1337322)|HEAP_ALLOCATE|[355]|Bytes:408
+10:23:41.1 (1348153)|HEAP_ALLOCATE|[467]|Bytes:48
+10:23:41.1 (1373669)|HEAP_ALLOCATE|[139]|Bytes:6
+10:23:41.1 (1391476)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:1
+10:23:41.1 (1445317)|STATEMENT_EXECUTE|[1]
+10:23:41.1 (1448100)|STATEMENT_EXECUTE|[1]
+10:23:41.1 (1486904)|HEAP_ALLOCATE|[50]|Bytes:5
+10:23:41.1 (1507559)|HEAP_ALLOCATE|[56]|Bytes:5
+10:23:41.1 (1515507)|HEAP_ALLOCATE|[64]|Bytes:7
+10:23:41.1 (1532665)|SYSTEM_MODE_ENTER|false
+10:23:41.1 (1547223)|HEAP_ALLOCATE|[1]|Bytes:5
+10:23:41.1 (10230506)|HEAP_ALLOCATE|[1]|Bytes:1
+10:23:41.1 (10243273)|HEAP_ALLOCATE|[1]|Bytes:2
+10:23:41.1 (10262881)|METHOD_ENTRY|[1]|01p6F00000EHsZW|ViewListCandidatesOrEmployeesController.ViewListCandidatesOrEmployeesController()
+10:23:41.1 (10269846)|STATEMENT_EXECUTE|[1]
+10:23:41.1 (10274717)|STATEMENT_EXECUTE|[1]
+10:23:41.1 (10279273)|METHOD_EXIT|[1]|ViewListCandidatesOrEmployeesController
+10:23:41.1 (10299555)|METHOD_ENTRY|[1]|01p6F00000EHsZW|ViewListCandidatesOrEmployeesController.getAllEmployees()
+10:23:41.1 (10333884)|STATEMENT_EXECUTE|[3]
+10:23:41.1 (10335898)|STATEMENT_EXECUTE|[4]
+10:23:41.1 (10340426)|HEAP_ALLOCATE|[4]|Bytes:241
+10:23:41.1 (10349975)|VARIABLE_SCOPE_BEGIN|[4]|query|String|false|false
+10:23:41.1 (10381192)|VARIABLE_ASSIGNMENT|[4]|query|"SELECT  Person__r.La (221 more) ..."
+10:23:41.1 (10387002)|STATEMENT_EXECUTE|[9]
+10:23:41.1 (12074496)|EXCEPTION_THROWN|[9]|System.QueryException: only aggregate expressions use field aliasing
+10:23:41.1 (12164647)|HEAP_ALLOCATE|[9]|Bytes:49
+10:23:41.1 (12184673)|METHOD_EXIT|[1]|01p6F00000EHsZW|ViewListCandidatesOrEmployeesController.getAllEmployees()
+10:23:41.1 (12195895)|SYSTEM_MODE_EXIT|false
+10:23:41.1 (12297431)|FATAL_ERROR|System.QueryException: only aggregate expressions use field aliasing
+
+Class.ViewListCandidatesOrEmployeesController.getAllEmployees: line 9, column 1
+AnonymousBlock: line 1, column 1
+AnonymousBlock: line 1, column 1
+10:23:41.12 (12345539)|CUMULATIVE_LIMIT_USAGE
+10:23:41.12 (12345539)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 100
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 100
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 50
+  Number of queueable jobs added to the queue: 0 out of 50
+  Number of Mobile Apex push calls: 0 out of 10
+
+10:23:41.12 (12345539)|CUMULATIVE_LIMIT_USAGE_END
+
+10:23:41.1 (12382971)|CODE_UNIT_FINISHED|execute_anonymous_apex
+10:23:41.1 (13978529)|EXECUTION_FINISHED

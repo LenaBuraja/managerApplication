@@ -1,0 +1,22 @@
+<apex:page controller="ViewSelectObject" showHeader="false">
+	<head>
+		<title>View object</title>
+	</head>
+	<body>
+		<apex:form id="form">
+			<div id="menu">
+				<apex:commandButton action="{! submitAllList }" value="All list" />
+				<apex:commandButton action="{! submitAddNew }" value="Add new" />
+				<apex:commandButton action="{! submitViewObject }" value="View object" />
+				<apex:commandButton action="{! submitPageManager }" value="Page for managers" />
+				<br/>
+			</div>
+			<apex:outputText value="{! tocken }" />
+			<apex:outputText value="{! objectType }" />
+			<apex:outputText value="{! objectId }" />
+			<div id="viewCandidate" style="display: none"></div>
+			<div id="viewEmployee" style="display: none"></div>
+			<div id="viewUser" style="display: none"></div>
+		</apex:form>	
+	</body>
+</apex:page>

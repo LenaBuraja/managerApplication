@@ -1,0 +1,2 @@
+<apex:page controller="SignUpController" showHeader="false">
+</apex:page>

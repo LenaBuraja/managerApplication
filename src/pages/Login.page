@@ -1,0 +1,11 @@
+<apex:page controller="User" showHeader="false">
+	<apex:form >
+		<p>Login</p>
+		<apex:inputText value="{! login }" />
+		<p>Password</p>
+		<apex:inputSecret value="{! password }" />
+		<br />
+		<apex:commandButton action="{! submitSignIn }" value="Login" />
+		<apex:commandButton action="{! gotoSignup }" value="Signup" />
+	</apex:form>
+</apex:page>

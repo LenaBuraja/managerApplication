@@ -1,0 +1,19 @@
+<apex:page controller="SignUpController" showHeader="false">
+	<apex:form >
+		<apex:outputText value="{! tocken }" />
+		<p>Last name</p>
+		<apex:inputText value="{! lastName }" />
+		<p>First name</p>
+		<apex:inputText value="{! firstName }" />
+		<p>Middle name</p>
+		<apex:inputText value="{! middleName }" />
+		<p>Login</p>
+		<apex:inputText value="{! userLogin }" />
+		<p>Password</p>
+		<apex:inputSecret value="{! firstPassword }" />
+		<p>Confirm password</p>
+		<apex:inputSecret value="{! secondPassword }" />
+		<br />
+		<apex:commandButton action="{! submitSignUp }" value="Sign up" />
+	</apex:form>
+</apex:page>

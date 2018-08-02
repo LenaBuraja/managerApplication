@@ -1,0 +1,113 @@
+<apex:page controller="CreateObjectController" showHeader="false">
+	<head>
+		<title>Add new object</title>
+	</head>
+	<body onload="candidate()">
+		<pageBlock  id="mainPB"> 
+			<apex:form id="form">
+				<div id="menu">
+					<apex:commandButton action="{! submitAllList }" value="All list" />
+					<apex:commandButton action="{! submitAddNew }" value="Add new" />
+					<apex:commandButton action="{! submitViewObject }" value="View object" />
+					<apex:commandButton action="{! submitPageManager }" value="Page for managers" />
+					<br/>
+				</div>
+				<script type="text/javascript">
+					function candidate() {
+						document.getElementById('candidate').style.display = 'block';
+						document.getElementById('employee').style.display = 'none';
+						document.getElementById('user').style.display = 'none';
+					}
+					function employee() {
+						document.getElementById('candidate').style.display = 'none';
+						document.getElementById('employee').style.display = 'block';
+						document.getElementById('user').style.display = 'none';
+					}
+					function user() {
+						document.getElementById('candidate').style.display = 'none';
+						document.getElementById('employee').style.display = 'none';
+						document.getElementById('user').style.display = 'block';
+					}
+				</script>
+				<apex:actionFunction action="{!forAddCandidate}" name="addCandidate" oncomplete="candidate();"></apex:actionFunction>
+				<apex:actionFunction action="{!forAddEmployee}" name="addEmployee" oncomplete="employee();"></apex:actionFunction>
+				<apex:actionFunction action="{!forAddUser}" name="addUser" oncomplete="user();"></apex:actionFunction>
+				<input name="btnAddCandidate" type="button" value="Add Candidate" onclick="candidate();"/>
+				<input name="btnAddEmployee" type="button" value="Add Employee" onclick="employee();"/>
+				<input name="btnAddUser" type="button" value="Add User" onclick="user();"/>
+				<p>Last name</p>
+				<apex:inputText value="{! LastName }" />
+				<p>First name</p>
+				<apex:inputText value="{! FirstName }" />
+				<p>Middle name</p>
+				<apex:inputText value="{! MiddleName }" />
+				<div id="candidate" style="display: none">
+					<p>Candidate</p>
+					<p>Phone</p>
+					<apex:inputText value="{! Phone }" />
+					<p>Experience</p>
+					<apex:inputText value="{! Experience }" />
+					<p>Scype</p>
+					<apex:inputText value="{! Scype }" />
+					<p>Email</p>
+					<apex:inputText value="{! Email }" />
+					<p>Pay</p>
+					<apex:inputText value="{! Pay }" />
+					<p>HR</p>
+					<apex:selectList id="selectHR" value="{! selectHRId }" size="1">
+						<apex:selectOptions value="{! HRList }"></apex:selectOptions>
+					</apex:selectList>
+					<br />
+					<p>Position</p>
+					<apex:selectList id="selectPositionCandidate" value="{! selectPositionId }" size="1">
+						<apex:selectOptions value="{! positionList }"></apex:selectOptions>
+					</apex:selectList>
+					<p>Status</p>
+					<apex:selectList id="selectStatus" value="{! selectStatusId }" size="1">
+						<apex:selectOptions value="{! statusList }"></apex:selectOptions>
+					</apex:selectList>
+					<p>Source</p>
+					<apex:selectList id="selectComming" value="{! selectCommingId }" size="1">
+						<apex:selectOptions value="{! commingList }"></apex:selectOptions>
+					</apex:selectList>
+					<br/>
+					<apex:selectList id="selectFirstConnection" value="{! selectFirstConnectionId }" size="1">
+						<apex:selectOptions value="{! firstConnectionList }"></apex:selectOptions>
+					</apex:selectList>
+					<br/>
+					<apex:commandButton action="{! submitAddCandidate }" value="Add" />
+				</div>
+				<div id="employee" style="display: none">
+					<p>Employee</p>
+					<p>Phone</p>
+					<apex:inputText value="{! Phone }" />
+					<p>Experience</p>
+					<apex:inputText value="{! Experience }" />
+					<p>Scype</p>
+					<apex:inputText value="{! Scype }" />
+					<p>Email</p>
+					<apex:inputText value="{! Email }" />
+					<p>Pay</p>
+					<apex:inputText value="{! Pay }" />
+					<p>Position</p>
+					<apex:selectList id="selectPositionEmployee" value="{! selectPositionId }" size="1">
+						<apex:selectOptions value="{! positionList }"></apex:selectOptions>
+					</apex:selectList>
+					<br/>
+					<apex:commandButton action="{! submitAddEmployee }" value="Add" />
+				</div>
+				<div id="user" style="display: none">
+					<p>User</p>
+					<p>Login</p>
+					<apex:inputText value="{! userLogin }" />
+					<p>Password</p>
+					<apex:inputSecret value="{! firstPassword }" />
+					<p>Confirm password</p>
+					<apex:inputSecret value="{! secondPassword }" />
+					<br />
+					<apex:commandButton action="{! submitAddUser }" value="Add" />
+				</div>
+			</apex:form>
+		</pageBlock>
+	</body>
+</apex:page>

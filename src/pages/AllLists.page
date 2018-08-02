@@ -1,0 +1,126 @@
+<apex:page controller="ViewListCandidatesOrEmployeesController" showHeader="false">
+	<head>
+		<title>View all objects</title>
+	</head>
+	<body onload="selectCandidate()">
+		<script type="text/javascript">
+			var objectId;
+			var objectType;
+			function gotoView(id, type) {
+				objectId = id;
+				objectType = type;
+				viewObject();
+			}
+
+			function selectCandidate() {
+				document.getElementById('viewSelectCandidates').style.display = 'block';
+				document.getElementById('viewSelectEmployees').style.display = 'none';
+				viewCandidates();
+			}
+
+			function selectEmployee() {
+				document.getElementById('viewSelectCandidates').style.display = 'none';
+				document.getElementById('viewSelectEmployees').style.display = 'block';
+				viewEmployees();
+			}
+
+			function candidates(listJSON) {
+				let tr = '';
+				let candidatesList = JSON.parse(listJSON);
+				for (let i = 0; i < candidatesList.length; i++) {
+					tr += '<tr>';
+					tr +='<td><button type="button" onclick="gotoView(\''
+					 + candidatesList[i].Id + '\', \'candidate\');"><img src="https://image.freepik.com/free-icon/eye-outline-with-lashes_318-47721.jpg" height="21" width="21"/></button></td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Person__r.LastName__c + ' ' + candidatesList[i].Person__r.FirstName__c + ' ' + candidatesList[i].Person__r.Middle_Name__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Position__r.Title__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].HR__r.LastName__c + ' ' + candidatesList[i].HR__r.FirstName__c + ' ' + candidatesList[i].HR__r.Middle_Name__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Person__r.Pay__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Person__r.Experience__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Person__r.Phone__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Person__r.Email__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Person__r.Scype__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + candidatesList[i].Status__r.Title__c + '</td>';
+					tr += '</tr>';
+				}
+				document.querySelector('#candidatesTable tbody').innerHTML = tr;
+			}
+
+			function employees(listJSON) {
+				let tr = '';
+				let employeesList = JSON.parse(listJSON);
+				for (let i = 0; i < employeesList.length; i++) {
+					tr += '<tr>';
+					tr +='<td><button type="button" onclick="gotoView(		&apos;'
+					 + candidatesList[i].Id + '&apos;, &apos;employee&apos;);"><img src="https://image.freepik.com/free-icon/eye-outline-with-lashes_318-47721.jpg" height="21" width="21"/></button></td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Person__r.LastName__c + ' ' + employeesList[i].Person__r.FirstName__c + ' ' + employeesList[i].Person__r.Middle_Name__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Employee_role__r.Title__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Person__r.Pay__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Person__r.Experience__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Person__r.Phone__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Person__r.Email__c + '</td>';
+					tr += '<td scope="row" tabindex="0">' + employeesList[i].Person__r.Scype__c + '</td>';
+					tr += '</tr>';
+				}
+				document.querySelector('#employeesTable tbody').innerHTML = tr;
+			}
+		</script>
+		<apex:form id="form">
+			<div id="menu">
+				<apex:commandButton action="{! submitAllList }" value="All list" />
+				<apex:commandButton action="{! submitAddNew }" value="Add new" />
+				<apex:commandButton action="{! submitViewObject }" value="View object" />
+				<apex:commandButton action="{! submitPageManager }" value="Page for managers" />
+				<br/>
+			</div>
+			<apex:actionFunction name="viewCandidates" action="{! getAllCandidates }" oncomplete="candidates('{!listJSON}')"></apex:actionFunction>
+			<apex:actionFunction name="viewEmployees" action="{! getAllEmployees }" oncomplete="employees('{!listJSON}')"></apex:actionFunction>
+			<apex:actionFunction name="viewObject" action="{! submitViewSelectObject }">
+				<apex:param value="objectId" assignTo="{!  objectId }" />
+				<apex:param value="objectType" assignTo="{!  objectType }" />
+			</apex:actionFunction>
+			<input name="btnViewCandidate" type="button" value="View Candidate" onclick="selectCandidate();"/>
+			<input name="btnViewEmployee" type="button" value="View Employee" onclick="selectEmployee();"/>
+			<br />
+		</apex:form>
+		<div id="viewSelectCandidates" style="display: none">
+			<table role="grid" id="candidatesTable">
+				<thead>
+					<tr>
+						<th></th>
+						<th>ФИО</th>
+						<th>Позиция</th>
+						<th>HR</th>
+						<th>ЗП</th>
+						<th>Опыт</th>
+						<th>Телефон</th>
+						<th>Эл. адрес</th>
+						<th>Scype</th>
+						<th>Статус</th>
+					</tr>	
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+		<div id="viewSelectEmployees" style="display: none">
+			<table role="grid" id="employeesTable">
+				<thead>
+					<tr>
+						<th></th>
+						<th>ФИО</th>
+						<th>Позиция</th>
+						<th>ЗП</th>
+						<th>Опыт</th>
+						<th>Телефон</th>
+						<th>Эл. адрес</th>
+						<th>Scype</th>
+					</tr>	
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
+	</body>
+</apex:page>
